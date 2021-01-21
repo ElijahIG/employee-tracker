@@ -33,7 +33,7 @@ function mainMenu() {
             },
         ])
         .then((answer) => {
-            switch (answer.action) {
+            switch (answer.choice) {
               case "Add a Department":
                 depAdd();
                 break;
@@ -63,4 +63,152 @@ function mainMenu() {
             console.log(error);
             process.exit(1);
           });
+}
+
+function depAdd() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of department?",
+                name: "department",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM department", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
+}
+function roleAdd() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of role?",
+                name: "role",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM role", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
+}
+function empAdd() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of employee?",
+                name: "employee",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM employee", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
+}
+function depView() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of department you would like to view",
+                name: "department",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM department", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
+}
+function roleView() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of role you would like to view?",
+                name: "role",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM role", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
+}
+function empView() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of employee you would like to view?",
+                name: "employee",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM employee", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
+}
+function empRoleUpd() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Enter name of role you want to update?",
+                name: "roleUpdate",
+            },
+        ])
+        .then(answers => {
+            connection.query("SELECT * FROM role", function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(answers);
+                    mainMenu();
+                }
+            }
+            );
+        });
 }
